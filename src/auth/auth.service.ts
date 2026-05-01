@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { UserService } from 'src/user/user.service';
+import { RegisterDto } from './dto/registerUser.dto';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class AuthService {
   constructor(private readonly userService: UserService) {}
-  registerUser() {
-    return this.userService.createUser();
+
+  async registerUser(registerUserDto: RegisterDto) {
+    return this.userService.createUser(registerUserDto);
   }
 }
